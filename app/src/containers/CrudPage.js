@@ -7,7 +7,7 @@ import FormControl from 'react-bootstrap/FormControl'
 import ModalWindowForAdd from '../components/ModalWindowForAdd'
 
 import { connect } from "react-redux";
-import { getEmployee, updateEmployee, deleteEmployee, addEmployee } from "../actions/crudActions"
+import { getEmployee, updateEmployee, deleteEmployee, addEmployee} from "../actions/crudActions"
 
 
 class CrudPage extends Component {
@@ -33,6 +33,7 @@ class CrudPage extends Component {
             itemClicked: true,
         })
     }
+
 
 
     renderRow = ({ _id, name, phone, age }) => {
@@ -111,7 +112,7 @@ class CrudPage extends Component {
 
 const mapStateToProps = store => {
     return {
-        employee: store.crud.employee
+        employee: store.crud.employee,
     };
 };
 
@@ -120,7 +121,7 @@ const mapDispatchToProps = dispatch => {
         getEmployeeAction: () => dispatch(getEmployee()),
         updateEmployeeAction: (id, name, age, phone) => dispatch(updateEmployee(id, name, age, phone)),
         deleteEmployeeAction: (id) => dispatch(deleteEmployee(id)),
-        addEmployeeAction: (name, age, phone) => dispatch(addEmployee(name, age, phone))
+        addEmployeeAction: (name, age, phone) => dispatch(addEmployee(name, age, phone)),
     };
 };
 

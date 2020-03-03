@@ -6,6 +6,7 @@ export const UPDATE_EMPLOYEE_FAIL = 'UPDATE_EMPLOYEE_FAIL'
 export const UPDATE_EMPLOYEE_SUCCESS = 'UPDATE_EMPLOYEE_SUCCESS'
 export const GET_EMPLOYEE_FAIL = "GET_EMPLOYEE_FAIL";
 export const GET_EMPLOYEE_SUCCESS = "GET_EMPLOYEE_SUCCESS";
+export const REMOVE_DATA = "REMOVE_DATA"
 
 export function getEmployee() {
     return dispatch => {
@@ -65,7 +66,8 @@ export function updateEmployee(_id, name, age, phone) {
         })
         .catch(err =>{
             dispatch({
-                type: UPDATE_EMPLOYEE_FAIL
+                type: UPDATE_EMPLOYEE_FAIL,
+                payload: err
             });
             alert(err);
         })
@@ -94,7 +96,8 @@ export function deleteEmployee(id) {
             })
             .catch(err => {
                 dispatch({
-                    type: DELETE_EMPLOYEE_FAIL
+                    type: DELETE_EMPLOYEE_FAIL,
+                    payload: err
                 });
                 alert(err);
             });
@@ -129,9 +132,17 @@ export function addEmployee(name, age, phone) {
             })
             .catch(err => {
                 dispatch({
-                    type: ADD_EMPLOYEE_FAIL
+                    type: ADD_EMPLOYEE_FAIL,
+                    payload: err
                 });
                 alert(err);
             });
     }
+}
+
+export function removeData(){
+    return dispatch => ({
+        type: REMOVE_DATA,
+        payload: []
+    })
 }

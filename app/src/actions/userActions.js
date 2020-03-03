@@ -1,3 +1,5 @@
+import { REMOVE_DATA } from "./crudActions"
+
 export const LOGIN_FAIL = 'LOGIN_FAIL'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const SIGNUP_FAIL = 'SIGNUP_FAIL'
@@ -102,6 +104,7 @@ export function signup(email, password) {
             .catch(err => {
                 dispatch({
                     type: SIGNUP_FAIL,
+                    payload: err
                 });
                 alert(err);
             });
@@ -114,5 +117,8 @@ export function logout() {
         dispatch({
             type: LOGOUT_SUCCESS
         });
+        dispatch({
+            type: REMOVE_DATA
+        })
     };
 }
