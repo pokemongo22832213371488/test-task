@@ -1,10 +1,12 @@
-import { REMOVE_DATA } from "./crudActions"
+import { REMOVE_DATA } from "../constants/employees"
 
-export const LOGIN_FAIL = 'LOGIN_FAIL'
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
-export const SIGNUP_FAIL = 'SIGNUP_FAIL'
-export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS'
-export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS'
+import {
+    LOGIN_FAIL,
+    LOGIN_SUCCESS,
+    SIGNUP_FAIL,
+    SIGNUP_SUCCESS,
+    LOGOUT_SUCCESS
+} from "../constants/user"
 
 export function checkToken() {
     return (dispatch) => {
