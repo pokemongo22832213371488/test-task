@@ -9,21 +9,24 @@ export default class ModalWindowForAdd extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            show: false
+            show: false,
+            name: "",
+            age: "",
+            phone: ""
         };
-        this.name = React.createRef();
-        this.age = React.createRef();
-        this.phone = React.createRef();
     }
 
     handleClose = () => {
         this.setState({
-            show: false
+            show: false,
+            name: "",
+            age: "",
+            phone: ""
         });
     }
 
     saveChanges = () => {
-        this.props.act(this.name.current.value, this.age.current.value, this.phone.current.value);
+        this.props.act(this.state.name, this.state.age, this.state.phone);
         this.handleClose();
     }
 
@@ -32,6 +35,13 @@ export default class ModalWindowForAdd extends Component {
             show: true
         });
     }
+
+    handleChange = (event) =>{
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    }
+
 
     render() {
         return (
@@ -47,9 +57,9 @@ export default class ModalWindowForAdd extends Component {
                         <InputGroup.Prepend>
                             <InputGroup.Text>Name, age, phone</InputGroup.Text>
                         </InputGroup.Prepend>
-                        <FormControl ref={this.name} />
-                        <FormControl ref={this.age} />
-                        <FormControl ref={this.phone} />
+                        <FormControl name="name" onChange={this.handleChange}/>
+                        <FormControl name="age" onChange={this.handleChange}/>
+                        <FormControl name="phone" onChange={this.handleChange}/>
                     </InputGroup></Modal.Body>
                     <Modal.Footer >
                         <Button variant="secondary" onClick={this.handleClose}>
